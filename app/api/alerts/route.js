@@ -17,7 +17,7 @@ import { buildClientPipeline } from '../../../lib/playbook'
 import { overdueAlertEmail } from '../../../lib/emails'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 export async function GET(request) {
   const authHeader = request.headers.get('authorization')
