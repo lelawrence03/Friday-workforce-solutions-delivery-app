@@ -8,7 +8,7 @@ import { Resend } from 'resend'
 import { intakeConfirmationEmail } from '../../../lib/emails'
 import { v4 as uuidv4 } from 'uuid'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 export async function POST(request) {
   const supabase = createServiceClient()
